@@ -13,17 +13,22 @@ FPS = 60
 
 class Player:
     def __init__(self):
-        self.rect = pygame.Rect(360,360,40,40)
-        self.speed = 10
+        # self.rect.width = self.speed 같게
+        self.rect = pygame.Rect(360,360,30,30)
+        self.speed = self.rect.width
     def move(self, keys):
         if keys[pygame.K_RIGHT]:
-            self.rect.x += self.speed
+            if self.rect.x <= 720 - self.speed - self.rect.width:
+                self.rect.x += self.speed
         if keys[pygame.K_LEFT]:
-            self.rect.x -= self.speed
-        if keys[pygame.K_UP]:
-            self.rect.y -= self.speed
+            if self.rect.x >= self.speed:
+                self.rect.x -= self.speed
+        if keys[pygame.K_UP]: 
+            if self.rect.y >= self.speed:
+                self.rect.y -= self.speed
         if keys[pygame.K_DOWN]:
-            self.rect.y += self.speed
+            if self.rect.y <= 720 - self.speed - self.rect.height:
+                self.rect.y += self.speed
     def draw(self):
         pygame.draw.rect(screen,(255,255,255), self.rect)
 def main():
