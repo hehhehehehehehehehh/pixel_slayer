@@ -31,6 +31,7 @@ class Player:
             if self.rect.y <= 720 - self.speed - self.rect.height:
                 self.rect.y += self.speed
     def draw(self):
+        pygame.draw.rect(screen,(255,255,255), self.rect)
 class Enemy:
     def __init__(self):
         self.rect = pygame.Rect(random.randint(0, screen_width-30), random.randint
